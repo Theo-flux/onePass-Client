@@ -11,30 +11,30 @@ import ROUTES from '~/constants/routes';
 
 <template>
   <AuthLayout>
-    <Title className="uppercase font-bebas tracking-wider" text="Register" />
+    <Title class-name="uppercase font-bebas tracking-wider" text="Register" />
     <Paragraph text="Let’s get you setup with a new account!" />
 
     <form className="mt-8 flex flex-col space-y-8">
       <fieldset>
         <Input
+          id="name"
           autofocus
           autocomplete="off"
           label="Name"
-          id="name"
           placeholder="John Doe"
           type="text"
         />
         <Input
+          id="email"
           autocomplete="off"
           label="Email"
-          id="email"
           placeholder="johndoe@gmail.com"
           type="email"
         />
         <Input
+          id="password"
           autocomplete="off"
           label="Password"
-          id="password"
           placeholder="Password"
           type="password"
         />

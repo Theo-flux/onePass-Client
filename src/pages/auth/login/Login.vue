@@ -11,23 +11,23 @@ import ROUTES from '~/constants/routes';
 
 <template>
   <AuthLayout>
-    <Title className="uppercase font-bebas tracking-wider" text="Login" />
+    <Title class-name="uppercase font-bebas tracking-wider" text="Login" />
     <Paragraph text="Login into your account!" />
 
     <form className="mt-8 flex flex-col space-y-8">
       <fieldset>
         <Input
+          id="email"
           autofocus
           autocomplete="off"
           label="Email"
-          id="email"
           placeholder="johndoe@gmail.com"
           type="email"
         />
         <Input
+          id="password"
           autocomplete="off"
           label="Password"
-          id="password"
           placeholder="Password"
           type="password"
         />

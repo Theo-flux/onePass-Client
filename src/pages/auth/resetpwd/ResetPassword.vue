@@ -10,15 +10,15 @@ import ROUTES from '~/constants/routes';
 
 <template>
   <AuthLayout>
-    <Title className="uppercase font-bebas tracking-wider" text="Reset" />
-    <Title className="uppercase font-bebas tracking-wider" text="Password" />
+    <Title class-name="uppercase font-bebas tracking-wider" text="Reset" />
+    <Title class-name="uppercase font-bebas tracking-wider" text="Password" />
 
     <form className="mt-8 flex flex-col space-y-8">
       <fieldset>
         <Input
+          id="password"
           autocomplete="off"
           label="New Password"
-          id="password"
           placeholder="Password"
           type="password"
         />
