@@ -11,20 +11,13 @@ import ROUTES from '~/constants/routes';
 
 <template>
   <AuthLayout>
-    <Title className="uppercase font-bebas tracking-wider" text="Register" />
-    <Paragraph text="Let’s get you setup with a new account!" />
+    <Title className="uppercase font-bebas tracking-wider" text="Login" />
+    <Paragraph text="Login into your account!" />
 
     <form className="mt-8 flex flex-col space-y-8">
       <fieldset>
         <Input
           autofocus
-          autocomplete="off"
-          label="Name"
-          id="name"
-          placeholder="John Doe"
-          type="text"
-        />
-        <Input
           autocomplete="off"
           label="Email"
           id="email"
@@ -39,10 +32,11 @@ import ROUTES from '~/constants/routes';
           type="password"
         />
 
-        <Button variable="filled" text="REGISTER" />
+        <Button variable="filled" text="login" />
       </fieldset>
 
-      <Anchor :to="ROUTES.LOGIN.path" :text="`Already have an account ?`" :label="`Login`" />
+      <Anchor :to="ROUTES.FORGOT_PWD.path" :label="`Forgot password ?`" />
+      <Anchor :to="ROUTES.REGISTER.path" :text="`Don't have an account ?`" :label="`Register`" />
     </form>
   </AuthLayout>
 </template>

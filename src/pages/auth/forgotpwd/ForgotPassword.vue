@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Paragraph from '~/components/typographys/Paragraph.vue';
 import Button from '~/components/forms/Button.vue';
 import Title from '~/components/typographys/Title.vue';
 import Input from '~/components/forms/Input.vue';
@@ -11,38 +10,22 @@ import ROUTES from '~/constants/routes';
 
 <template>
   <AuthLayout>
-    <Title className="uppercase font-bebas tracking-wider" text="Register" />
-    <Paragraph text="Let’s get you setup with a new account!" />
+    <Title className="uppercase font-bebas tracking-wider" text="Forgot" />
+    <Title className="uppercase font-bebas tracking-wider" text="Password" />
 
     <form className="mt-8 flex flex-col space-y-8">
       <fieldset>
         <Input
           autofocus
           autocomplete="off"
-          label="Name"
-          id="name"
-          placeholder="John Doe"
-          type="text"
-        />
-        <Input
-          autocomplete="off"
           label="Email"
           id="email"
           placeholder="johndoe@gmail.com"
           type="email"
         />
-        <Input
-          autocomplete="off"
-          label="Password"
-          id="password"
-          placeholder="Password"
-          type="password"
-        />
-
-        <Button variable="filled" text="REGISTER" />
+        <Button variable="filled" text="submit" />
       </fieldset>
-
-      <Anchor :to="ROUTES.LOGIN.path" :text="`Already have an account ?`" :label="`Login`" />
+      <Anchor :to="ROUTES.LOGIN.path" :text="`Remeber your password ?`" :label="`Login`" />
     </form>
   </AuthLayout>
 </template>

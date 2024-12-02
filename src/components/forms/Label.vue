@@ -10,7 +10,7 @@ defineProps<ILabelProps>();
 <template>
   <label
     v-bind="$attrs"
-    :class="`text-xs font-bebas text-neutral-500 cursor-pointer px-2 ${className}`"
+    :class="`text-xs font-light font-bebas tracking-wider text-neutral-900 cursor-pointer px-2 ${className}`"
   >
     {{ text }}
   </label>

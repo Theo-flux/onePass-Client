@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import Label from './Label.vue';
 import { BsEye, BsEyeSlash } from '@kalimahapps/vue-icons';
 
@@ -12,9 +12,11 @@ interface IInputProps {
 }
 
 const props = defineProps<IInputProps>();
-const showPass = ref(false);
-const inputType = props.type === 'password' ? (showPass.value ? 'text' : 'password') : props.type;
-console.log(inputType, showPass.value);
+const showPass = ref<boolean>(false);
+
+const inputType = computed(() => {
+  return props.type === 'password' ? (showPass.value ? 'text' : 'password') : props.type;
+});
 </script>
 
 <template>
@@ -33,13 +35,13 @@ console.log(inputType, showPass.value);
         v-bind="$attrs"
       />
 
-      <div v-if="inputType === 'password'" class="absolute top-3 right-3">
+      <div v-if="props.type === 'password'" class="absolute top-3 right-3">
         <BsEye v-if="showPass" @click="showPass = false" />
         <BsEyeSlash v-else @click="showPass = true" />
       </div>
     </div>
 
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between px-2">
       <small v-if="error" class="text-xs text-error/50 transition-all duration-300">{{
         error
       }}</small>

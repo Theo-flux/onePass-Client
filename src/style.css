@@ -10,8 +10,8 @@ body {
 
 @layer components {
   .btn {
-    @apply flex font-bebas cursor-pointer items-center justify-center text-xl whitespace-nowrap px-2;
-    @apply transition-all rounded-lg duration-150 ease-in-out disabled:cursor-not-allowed disabled:opacity-50 hover:disabled:opacity-50;
+    @apply flex tracking-wider font-bebas cursor-pointer items-center justify-center text-xl whitespace-nowrap px-2;
+    @apply transition-all rounded-xl duration-150 ease-in-out disabled:cursor-not-allowed disabled:opacity-50 hover:disabled:opacity-50;
   }
   .btn-filled {
     @apply border-none bg-bitterSweet text-white hover:opacity-70;
