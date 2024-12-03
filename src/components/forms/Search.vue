@@ -1,44 +1,36 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
 import Label from './Label.vue';
-import { BsEye, BsEyeSlash } from '@kalimahapps/vue-icons';
+import { AkSearch } from '@kalimahapps/vue-icons';
 
 interface IInputProps {
   label?: string;
   id?: string;
   error?: string;
   note?: string;
-  type?: string;
 }
 
 const props = defineProps<IInputProps>();
-const showPass = ref<boolean>(false);
-
-const inputType = computed(() => {
-  return props.type === 'password' ? (showPass.value ? 'text' : 'password') : props.type;
-});
 </script>
 
 <template>
   <div class="flex w-full flex-col space-y-0 relative">
     <Label v-if="label" :for="id" :text="label" />
 
-    <div class="relative flex w-full">
+    <div
+      :class="`flex items-center w-full h-[40px] px-2 rounded-xl border-2 border-borderLine font-light text-sm outline-none transition-all
+      duration-300 hover:border-bitterSweet focus-within:border-bitterSweet ${
+        props.error ? 'border-error/50 bg-error/5' : ''
+      } disabled:focus-within:border-neutral-borderLine disabled:cursor-not-allowed
+      disabled:text-neutral-300 disabled:hover:border-borderLine`"
+    >
+      <AkSearch />
       <input
         :id="id"
-        :type="inputType"
-        :class="`h-[40px] w-full px-2 rounded-xl border-2 border-borderLine font-light text-sm outline-none transition-all
-      duration-300 hover:border-bitterSweet focus:border-bitterSweet ${
-        props.error ? 'border-error/50 bg-error/5' : ''
-      } disabled:focus:border-neutral-borderLine disabled:cursor-not-allowed
-      disabled:text-neutral-300 disabled:hover:border-borderLine`"
+        type="text"
+        :class="`h-full w-full px-2 rounded-xl font-light text-sm outline-none border-none transition-all
+      duration-300`"
         v-bind="$attrs"
       />
-
-      <div v-if="props.type === 'password'" class="absolute top-3 right-3">
-        <BsEye v-if="showPass" @click="showPass = false" />
-        <BsEyeSlash v-else @click="showPass = true" />
-      </div>
     </div>
 
     <div className="flex items-center justify-between px-2">
