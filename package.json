@@ -24,6 +24,7 @@
     "eslint-plugin-vue": "^9.32.0",
     "husky": "8.0.3",
     "path": "^0.12.7",
+    "pinia": "^2.2.8",
     "prettier": "^3.4.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "vue": "^3.5.12",
