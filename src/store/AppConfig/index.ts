@@ -4,7 +4,7 @@ import initializer from '~/utils/initializer';
 
 const INIT_IS_OPEN = initializer(AppModals, false);
 
-export const useAppConfig = defineStore('AppConfigStore', {
+const useAppConfigStore = defineStore('AppConfigStore', {
   // states
   state: () => ({ nonce: 0, isOpen: { ...INIT_IS_OPEN } }),
 
@@ -22,6 +22,7 @@ export const useAppConfig = defineStore('AppConfigStore', {
           break;
 
         default:
+          this.isOpen = { ...INIT_IS_OPEN };
           break;
       }
 
@@ -33,3 +34,5 @@ export const useAppConfig = defineStore('AppConfigStore', {
     }
   }
 });
+
+export default useAppConfigStore;

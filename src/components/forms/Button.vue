@@ -19,7 +19,7 @@ const btnStyle = computed(() => {
     case 'filled':
       return 'btn-filled';
     case 'outlined':
-      return 'btn-filled';
+      return 'btn-outlined';
     default:
       return 'btn';
   }

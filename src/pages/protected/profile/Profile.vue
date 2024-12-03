@@ -4,20 +4,25 @@ import Title from '~/components/typographys/Title.vue';
 import ProtectedLayout from '~/layouts/ProtectedLayout.vue';
 import OPProfileImg from '~/assets/onepass_profile.png';
 import { RaAvatar, CdLock, FeEdit3, TaLogout2 } from '@kalimahapps/vue-icons';
+import { AppModals } from '~/store/AppConfig/AppModalTypes';
+import useAppConfigStore from '~/store/AppConfig';
+
+const AppConfigStore = useAppConfigStore();
+const { toggleModals } = AppConfigStore;
 
 const settings = [
   {
     Icon: RaAvatar,
     name: 'Update Profile',
     action: () => {
-      console.log('Update Profile');
+      toggleModals({ name: AppModals.EDIT_PROFILE, open: true });
     }
   },
   {
     Icon: CdLock,
     name: 'Change Master Password',
     action: () => {
-      console.log('Change Master Password');
+      toggleModals({ name: AppModals.CHANGE_MASTER_PWD, open: true });
     }
   },
   {
