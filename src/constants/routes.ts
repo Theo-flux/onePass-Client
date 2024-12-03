@@ -20,6 +20,7 @@ class Routes {
   LOGIN = new Route('/auth/login', 'Sign in page', 'Login - Page');
   FORGOT_PWD = new Route('/auth/forgot_pwd', 'Forgot Password page', 'Forgot Password - Page');
   RESET_PWD = new Route('/auth/reset_pwd/:id', 'Reset Password page', 'Reset Password - Page');
+  PROFILE = new Route('/profile', 'Profile page', 'Profile - Page');
 }
 
 const ROUTES = new Routes();

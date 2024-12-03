@@ -10,8 +10,8 @@ import ROUTES from '~/constants/routes';
 
 <template>
   <AuthLayout>
-    <Title class-name="uppercase font-bebas tracking-wider" text="Reset" />
-    <Title class-name="uppercase font-bebas tracking-wider" text="Password" />
+    <Title text="Reset" />
+    <Title text="Password" />
 
     <form className="mt-8 flex flex-col space-y-8">
       <fieldset>

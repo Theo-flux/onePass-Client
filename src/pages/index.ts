@@ -5,12 +5,14 @@ import Login from './auth/login/Login.vue';
 import ROUTES from '~/constants/routes';
 import ForgotPassword from './auth/forgotpwd/ForgotPassword.vue';
 import ResetPassword from './auth/resetpwd/ResetPassword.vue';
+import Profile from './protected/profile/Profile.vue';
 
 const routes = [
   { path: ROUTES.REGISTER.path, component: Register },
   { path: ROUTES.LOGIN.path, component: Login },
   { path: ROUTES.FORGOT_PWD.path, component: ForgotPassword },
   { path: ROUTES.RESET_PWD.path, component: ResetPassword },
+  { path: ROUTES.PROFILE.path, component: Profile },
   { path: ROUTES.HOME.path, component: Home, exact: true }
 ];
 

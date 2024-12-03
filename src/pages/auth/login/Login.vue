@@ -11,7 +11,7 @@ import ROUTES from '~/constants/routes';
 
 <template>
   <AuthLayout>
-    <Title class-name="uppercase font-bebas tracking-wider" text="Login" />
+    <Title text="Login" />
     <Paragraph text="Login into your account!" />
 
     <form className="mt-8 flex flex-col space-y-8">
