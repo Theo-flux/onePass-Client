@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { AkHome, ClAddPlus, RaAvatar } from '@kalimahapps/vue-icons';
 import ROUTES from '~/constants/routes';
+import useAppConfigStore from '~/store/AppConfig';
+import { AppModals } from '~/store/AppConfig/AppModalTypes';
+
+const AppConfigStore = useAppConfigStore();
 </script>
 
 <template>
@@ -14,6 +18,7 @@ import ROUTES from '~/constants/routes';
       <div class="absolute left-[50%]">
         <div
           class="bg-bitterSweet shadow -top-6 transition-all duration-300 ease-in-out hover:bg-black hover:-top-8 cursor-pointer w-[60px] h-[60px] relative -left-[50%] text-white flex justify-center items-center text-3xl rounded-full"
+          @click="AppConfigStore.toggleModals({ open: true, name: AppModals.ADD_NEW_MODAL })"
         >
           <ClAddPlus />
         </div>

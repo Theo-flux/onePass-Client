@@ -10,14 +10,20 @@ const ModalsMap = {
   ),
   [AppModals.CHANGE_MASTER_PWD]: defineAsyncComponent(
     () => import('@pages/protected/profile/components/changePassword.vue')
+  ),
+  [AppModals.ADD_NEW_MODAL]: defineAsyncComponent(
+    () => import('@pages/protected/home/components/AddNewModal.vue')
+  ),
+  [AppModals.GENERATE_PWD]: defineAsyncComponent(
+    () => import('@pages/protected/home/components/Generate.vue')
   )
 };
 
 const AppConfigStore = useAppConfigStore();
 const { isOpen } = storeToRefs(AppConfigStore);
 
-const OpenedModals = computed(() =>
-  Object.entries(ModalsMap).reduce(
+const OpenedModals = computed(() => {
+  return Object.entries(ModalsMap).reduce(
     (acc: { Render: VNode; name: string }[], [keyName, Component]) => {
       if (isOpen.value[keyName as keyof typeof AppModals]) {
         acc.push({ Render: h(Component, { key: keyName }), name: keyName });
@@ -25,12 +31,12 @@ const OpenedModals = computed(() =>
       return acc;
     },
     []
-  )
-);
+  );
+});
 </script>
 
 <template>
-  <template v-for="OpenedModal in OpenedModals" :key="OpenedModal">
+  <div v-for="OpenedModal in OpenedModals" :key="OpenedModal.name">
     <component :is="OpenedModal.Render" />
-  </template>
+  </div>
 </template>

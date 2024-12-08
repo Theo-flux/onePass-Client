@@ -2,35 +2,29 @@ import { defineStore } from 'pinia';
 import { AppModals, TAppModalsAction } from './AppModalTypes';
 import initializer from '~/utils/initializer';
 
-const INIT_IS_OPEN = initializer(AppModals, false);
-
 const useAppConfigStore = defineStore('AppConfigStore', {
   // states
-  state: () => ({ nonce: 0, isOpen: { ...INIT_IS_OPEN } }),
-
-  // getters or computed
-  getters: {},
+  state: () => ({
+    nonce: 0,
+    isOpen: { ...initializer(AppModals, false) }
+  }),
 
   // actions or methods
   actions: {
     setModalOpenState(name: AppModals, open?: boolean) {
       this.isOpen[name] = typeof open === 'undefined' ? !this.isOpen[name] : open;
-    },
-    toggleModals(modal: TAppModalsAction = {}) {
-      switch (modal.name) {
-        case '':
-          break;
 
-        default:
-          this.isOpen = { ...INIT_IS_OPEN };
-          break;
+      this.nonce = Date.now() + Math.random();
+    },
+
+    toggleModals(modal?: TAppModalsAction) {
+      if (!modal || modal.name === '') {
+        return;
       }
 
       if (modal.name && AppModals[modal.name] !== undefined) {
         this.setModalOpenState(modal.name, modal.open);
       }
-
-      this.nonce = Date.now() + Math.random();
     }
   }
 });
