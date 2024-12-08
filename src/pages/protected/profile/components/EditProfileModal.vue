@@ -8,6 +8,7 @@ import Paragraph from '~/components/typographys/Paragraph.vue';
 import Input from '~/components/forms/Input.vue';
 import Button from '~/components/forms/Button.vue';
 import OPProfileImg from '~/assets/onepass_profile.png';
+import { AppModals } from '~/store/AppConfig/AppModalTypes';
 
 const AppConfigStore = useAppConfigStore();
 const { isOpen } = storeToRefs(AppConfigStore);
@@ -19,7 +20,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
       <div class="flex justify-start w-full items-center">
         <AkChevronLeftSmall
           class="text-xl cursor-pointer"
-          @click="AppConfigStore.toggleModals({})"
+          @click="AppConfigStore.toggleModals({ open: false, name: AppModals.EDIT_PROFILE })"
         />
       </div>
 
