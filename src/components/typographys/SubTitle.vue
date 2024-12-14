@@ -8,5 +8,5 @@ defineProps<{
 </script>
 
 <template>
-  <h3 :class="`text-lg font-semibold md:text-xl ${className || ''}`">{{ text }}</h3>
+  <h3 :class="`text-lg font-medium md:text-xl ${className || ''}`">{{ text }}</h3>
 </template>

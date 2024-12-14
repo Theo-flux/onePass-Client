@@ -4,6 +4,7 @@ import Slab from './components/Slab.vue';
 import Search from '~/components/forms/Search.vue';
 import OnepassSearchImg from '~/assets/onepass-server.svg';
 import Paragraph from '~/components/typographys/Paragraph.vue';
+import ItemPod from './components/ItemPod.vue';
 </script>
 
 <template>
@@ -20,7 +21,13 @@ import Paragraph from '~/components/typographys/Paragraph.vue';
       </section>
 
       <Search id="search" autofocus autocomplete="off" placeholder="search apps..." />
-      <figure class="w-full h-full flex flex-col py-4 justify-center items-center space-y-4">
+
+      <div class="w-full h-[60vh] overflow-y-scroll">
+        <div class="w-full h-[1200px]">
+          <ItemPod name="Facebook" />
+        </div>
+      </div>
+      <!-- <figure class="w-full h-full flex flex-col py-4 justify-center items-center space-y-4">
         <img :src="OnepassSearchImg" alt="" />
 
         <div class="flex flex-col space-y-1 w-[300px] text-center">
@@ -30,7 +37,7 @@ import Paragraph from '~/components/typographys/Paragraph.vue';
             text="We couldn't find anything from your search. Try searching for something else."
           />
         </div>
-      </figure>
+      </figure> -->
     </div>
   </ProtectedLayout>
 </template>

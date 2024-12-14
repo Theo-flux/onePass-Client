@@ -9,13 +9,16 @@ const ModalsMap = {
     () => import('@pages/protected/profile/components/EditProfileModal.vue')
   ),
   [AppModals.CHANGE_MASTER_PWD]: defineAsyncComponent(
-    () => import('@pages/protected/profile/components/changePassword.vue')
+    () => import('@pages/protected/profile/components/ChangePassword.vue')
   ),
   [AppModals.ADD_NEW_MODAL]: defineAsyncComponent(
     () => import('@pages/protected/home/components/AddNewModal.vue')
   ),
   [AppModals.GENERATE_PWD]: defineAsyncComponent(
     () => import('@pages/protected/home/components/Generate.vue')
+  ),
+  [AppModals.ITEM_DETAILS_MODAL]: defineAsyncComponent(
+    () => import('@pages/protected/home/components/ItemDetailsModal.vue')
   )
 };
 
