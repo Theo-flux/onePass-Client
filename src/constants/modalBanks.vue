@@ -19,6 +19,10 @@ const ModalsMap = {
   ),
   [AppModals.ITEM_DETAILS_MODAL]: defineAsyncComponent(
     () => import('@pages/protected/home/components/ItemDetailsModal.vue')
+  ),
+
+  [AppModals.UPDATE_ITEM_MODAL]: defineAsyncComponent(
+    () => import('@pages/protected/home/components/UpdateItemModal.vue')
   )
 };
 

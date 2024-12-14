@@ -13,17 +13,17 @@ const { isOpen } = storeToRefs(AppConfigStore);
 </script>
 
 <template>
-  <FullModal class-name="" :show="isOpen.ADD_NEW_MODAL">
+  <FullModal class-name="" :show="isOpen.UPDATE_ITEM_MODAL">
     <div class="flex flex-col w-full py-8 space-y-8">
       <div class="flex justify-start w-full items-center">
         <AkChevronLeftSmall
           class="text-xl cursor-pointer"
-          @click="AppConfigStore.toggleModals({ name: AppModals.ADD_NEW_MODAL, open: false })"
+          @click="AppConfigStore.toggleModals({ name: AppModals.UPDATE_ITEM_MODAL, open: false })"
         />
       </div>
 
       <form class="flex flex-col space-y-24">
-        <Title text="Add New" />
+        <Title text="update" />
 
         <fieldset className="mt-8 flex flex-col space-y-8">
           <div>
@@ -73,7 +73,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
           </div>
         </fieldset>
 
-        <Button variable="filled" text="add password" />
+        <Button variable="filled" text="save changes" />
       </form>
     </div>
   </FullModal>
