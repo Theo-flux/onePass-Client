@@ -18,6 +18,7 @@ import ROUTES from '~/constants/routes';
       <fieldset>
         <Input
           id="name"
+          name="name"
           autofocus
           autocomplete="off"
           label="Name"
@@ -26,6 +27,7 @@ import ROUTES from '~/constants/routes';
         />
         <Input
           id="email"
+          name="email"
           autocomplete="off"
           label="Email"
           placeholder="johndoe@gmail.com"
@@ -33,6 +35,7 @@ import ROUTES from '~/constants/routes';
         />
         <Input
           id="password"
+          name="password"
           autocomplete="off"
           label="Password"
           placeholder="Password"
