@@ -5,7 +5,7 @@ export const RegisterSchema = z.object({
   name: z
     .string({ required_error: 'Enter first and last name' })
     .trim()
-    .refine((val) => val === '', { message: 'Field is required.' }),
+    .refine((val) => val !== '', { message: 'Field is required.' }),
   email,
   password
 });

@@ -17,6 +17,7 @@ import ROUTES from '~/constants/routes';
       <fieldset>
         <Input
           id="password"
+          name="password"
           autocomplete="off"
           label="New Password"
           placeholder="Password"
