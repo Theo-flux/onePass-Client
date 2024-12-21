@@ -7,9 +7,21 @@ import Title from '~/components/typographys/Title.vue';
 import Input from '~/components/forms/Input.vue';
 import Button from '~/components/forms/Button.vue';
 import { AppModals } from '~/store/AppConfig/AppModalTypes';
+import { useForm } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/zod';
+import { AddNewSchema, TAddNewSchema } from '../validation';
 
 const AppConfigStore = useAppConfigStore();
 const { isOpen } = storeToRefs(AppConfigStore);
+
+const validationSchema = toTypedSchema(AddNewSchema);
+const { handleSubmit } = useForm<TAddNewSchema>({
+  validationSchema
+});
+
+const onsubmit = handleSubmit((value: TAddNewSchema) => {
+  alert(JSON.stringify(value));
+});
 </script>
 
 <template>
@@ -22,13 +34,14 @@ const { isOpen } = storeToRefs(AppConfigStore);
         />
       </div>
 
-      <form class="flex flex-col space-y-24">
+      <form @submit="onsubmit" class="flex flex-col space-y-24">
         <Title text="Add New" />
 
         <fieldset className="mt-8 flex flex-col space-y-8">
           <div>
             <Input
               id="name"
+              name="name"
               autofocus
               autocomplete="off"
               label="Name"
@@ -38,7 +51,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
 
             <Input
               id="url"
-              autofocus
+              name="url"
               autocomplete="off"
               label="url"
               placeholder="John Doe"
@@ -47,6 +60,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
 
             <Input
               id="email"
+              name="email"
               autocomplete="off"
               label="Email/Username"
               placeholder="johndoe@gmail.com"
@@ -55,6 +69,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
 
             <Input
               id="password"
+              name="password"
               autocomplete="off"
               label="Password"
               placeholder="Password"
@@ -73,7 +88,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
           </div>
         </fieldset>
 
-        <Button variable="filled" text="add password" />
+        <Button type="submit" variable="filled" text="add password" />
       </form>
     </div>
   </FullModal>

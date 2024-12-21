@@ -13,7 +13,9 @@ const AppConfigStore = useAppConfigStore();
       class="flex relative h-[50px] w-full justify-between items-center bg-borderLine px-4 rounded-lg"
     >
       <RouterLink :to="ROUTES.HOME.path">
-        <AkHome class="text-2xl cursor-pointer" />
+        <AkHome
+          class="text-2xl cursor-pointer transition-all duration-300 ease-in-out hover:text-bitterSweet"
+        />
       </RouterLink>
       <div class="absolute left-[50%]">
         <div
@@ -25,7 +27,9 @@ const AppConfigStore = useAppConfigStore();
       </div>
 
       <RouterLink :to="ROUTES.PROFILE.path">
-        <RaAvatar class="text-2xl cursor-pointer" />
+        <RaAvatar
+          class="text-2xl cursor-pointer transition-all duration-300 ease-in-out hover:text-bitterSweet"
+        />
       </RouterLink>
     </div>
   </div>

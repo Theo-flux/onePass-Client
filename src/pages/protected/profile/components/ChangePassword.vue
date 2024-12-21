@@ -7,9 +7,21 @@ import Title from '~/components/typographys/Title.vue';
 import Input from '~/components/forms/Input.vue';
 import Button from '~/components/forms/Button.vue';
 import { AppModals } from '~/store/AppConfig/AppModalTypes';
+import { useForm } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/zod';
+import { ChangePwdSchema, TChangePwdSchema } from '../validation';
 
 const AppConfigStore = useAppConfigStore();
 const { isOpen } = storeToRefs(AppConfigStore);
+
+const validationSchema = toTypedSchema(ChangePwdSchema);
+const { handleSubmit } = useForm<TChangePwdSchema>({
+  validationSchema
+});
+
+const onSubmit = handleSubmit((value: TChangePwdSchema) => {
+  alert(JSON.stringify(value));
+});
 </script>
 
 <template>
@@ -28,9 +40,10 @@ const { isOpen } = storeToRefs(AppConfigStore);
           <Title text="Password" />
         </data>
 
-        <form class="flex flex-col justify-center items-center">
+        <form @submit="onSubmit" class="flex flex-col justify-center items-center">
           <Input
             id="password"
+            name="password"
             autocomplete="off"
             label="New Password"
             placeholder="Password"
@@ -38,6 +51,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
           />
           <Input
             id="password"
+            name="cPassword"
             autocomplete="off"
             label="Confirm Password"
             placeholder="Password"

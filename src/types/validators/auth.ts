@@ -1,6 +1,13 @@
 import { z } from 'zod';
 import { lowerCaseRegex, numberRegex, specialCharcterRegex, upperCaseRegex } from '~/utils';
 
+export const name = z
+  .string({ required_error: 'Name is required' })
+  .trim()
+  .refine((val) => val !== '', { message: 'Field is required.' });
+
+export const url = z.string({ required_error: 'Url is required' }).url();
+
 export const email = z
   .string({ required_error: 'Email is required.' })
   .email('Invalid email address.');

@@ -11,7 +11,6 @@ import { toTypedSchema } from '@vee-validate/zod';
 import ROUTES from '~/constants/routes';
 
 const validationSchema = toTypedSchema(RegisterSchema);
-
 const { handleSubmit } = useForm<TRegisterSchema>({ validationSchema });
 
 const onSubmit = handleSubmit((values: TRegisterSchema) => {
