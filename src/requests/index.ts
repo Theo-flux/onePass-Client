@@ -11,14 +11,6 @@ const server = axios.create({
   }
 });
 
-export const OPFormServer = axios.create({
-  baseURL: API.BASE_URL,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': "multipart/form-data'"
-  }
-});
-
 const resourceReqInterceptor = (config: InternalAxiosRequestConfig) => {
   const token = authGet(Mangle.ACCESS_TOKEN);
 
@@ -42,37 +34,7 @@ server.interceptors.response.use(resourceResInteceptor, async (error) => {
     const originalRequest = error.config;
 
     // use refresh token when error is 403
-    if ([403].includes(error.response.status) && !originalRequest._retry) {
-      originalRequest._retry = true;
-
-      const refresh_token = authGet(Mangle.REFRESH_TOKEN);
-      const tokenObj: TUserAccessToken = { access_token: '', refresh_token: '' };
-
-      if (refresh_token) {
-        await getRefreshToken(refresh_token)
-          .then((res: TUserAccessToken) => {
-            tokenObj.access_token = res.access_token;
-            tokenObj.refresh_token = res.refresh_token;
-            return;
-          })
-          .catch((err) => {
-            throw new Error(err);
-          });
-      }
-      const { access_token } = tokenObj;
-      axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
-      return server(originalRequest);
-    }
-  }
-  return Promise.reject(error);
-});
-
-OPFormServer.interceptors.response.use(resourceResInteceptor, async (error) => {
-  if (error.response) {
-    const originalRequest = error.config;
-
-    // use refresh token when error is 403
-    if ([403].includes(error.response.status) && !originalRequest._retry) {
+    if ([403, 401].includes(error.response.status) && !originalRequest._retry) {
       originalRequest._retry = true;
 
       const refresh_token = authGet(Mangle.REFRESH_TOKEN);
@@ -98,6 +60,4 @@ OPFormServer.interceptors.response.use(resourceResInteceptor, async (error) => {
 });
 
 server.interceptors.request.use(resourceReqInterceptor, resourceReqErrorInterceptor);
-OPFormServer.interceptors.request.use(resourceReqInterceptor, resourceReqErrorInterceptor);
-
 export default server;

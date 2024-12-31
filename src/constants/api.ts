@@ -3,5 +3,7 @@ export const API = {
 };
 
 export const AUTH = {
+  LOGIN: '/auth/login',
+  REGISTER: '/auth/register',
   REFRESH_TOKEN: '/auth/refresh/:rt'
 };

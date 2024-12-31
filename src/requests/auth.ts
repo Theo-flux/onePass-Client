@@ -1,6 +1,7 @@
 import { parseError } from '~/utils/parseError';
 import server from '.';
 import { AUTH } from '~/constants/api';
+import { TRegisterSchema } from '~/pages/auth/register/validation';
 
 // get
 export const getUser = async () => {
@@ -26,13 +27,11 @@ export const getRefreshToken = async (refresh_token: string) => {
 };
 
 // post
-export const postLogin = async () => {
-  return;
-};
+export const postLogin = async (payload: TLoginPayload) =>
+  server.post<TUserAccessToken>(AUTH.LOGIN, payload);
 
-export const postRegister = async () => {
-  return;
-};
+export const postRegister = async (payload: TRegisterSchema) =>
+  server.post<{ message: string }>(AUTH.REGISTER, payload);
 
 export const postForgotPwd = async () => {
   return;

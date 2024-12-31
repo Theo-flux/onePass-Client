@@ -39,6 +39,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
 
         <Input
           id="name"
+          name="name"
           autofocus
           autocomplete="off"
           label="Name"

@@ -2,8 +2,8 @@
 import ProtectedLayout from '~/layouts/ProtectedLayout.vue';
 import Slab from './components/Slab.vue';
 import Search from '~/components/forms/Search.vue';
-import OnepassSearchImg from '~/assets/onepass-server.svg';
-import Paragraph from '~/components/typographys/Paragraph.vue';
+// import OnepassSearchImg from '~/assets/onepass-server.svg';
+// import Paragraph from '~/components/typographys/Paragraph.vue';
 import ItemPod from './components/ItemPod.vue';
 </script>
 

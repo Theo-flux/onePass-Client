@@ -9,12 +9,16 @@ import { useForm } from 'vee-validate';
 import { RegisterSchema, TRegisterSchema } from './validation';
 import { toTypedSchema } from '@vee-validate/zod';
 import ROUTES from '~/constants/routes';
+import useAuthStore from '~/store/AuthStore';
+import { storeToRefs } from 'pinia';
 
 const validationSchema = toTypedSchema(RegisterSchema);
 const { handleSubmit } = useForm<TRegisterSchema>({ validationSchema });
+const AuthStore = useAuthStore();
+const { isLoading } = storeToRefs(AuthStore);
 
 const onSubmit = handleSubmit((values: TRegisterSchema) => {
-  alert(JSON.stringify(values));
+  AuthStore.createUser(values);
 });
 </script>
 
@@ -24,7 +28,7 @@ const onSubmit = handleSubmit((values: TRegisterSchema) => {
     <Paragraph text="Let’s get you setup with a new account!" />
 
     <form @submit="onSubmit" className="mt-8 flex flex-col space-y-8">
-      <fieldset>
+      <fieldset :disabled="isLoading.register">
         <Input
           id="name"
           name="name"
@@ -51,7 +55,13 @@ const onSubmit = handleSubmit((values: TRegisterSchema) => {
           type="password"
         />
 
-        <Button variable="filled" text="REGISTER" type="submit" />
+        <Button
+          variable="filled"
+          text="REGISTER"
+          type="submit"
+          :isLoading="isLoading.register"
+          :disabled="isLoading.register"
+        />
       </fieldset>
 
       <Anchor :to="ROUTES.LOGIN.path" :text="`Already have an account ?`" :label="`Login`" />

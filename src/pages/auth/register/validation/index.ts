@@ -1,7 +1,8 @@
 import { z } from 'zod';
-import { email, password } from '~/types/validators/auth';
+import { email, name, password } from '~/types/validators/auth';
 
 export const RegisterSchema = z.object({
+  name,
   email,
   password
 });

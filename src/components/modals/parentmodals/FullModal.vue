@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, TransitionRoot, TransitionChild } from '@headlessui/vue';
-import useAppConfigStore from '~/store/AppConfig';
 
 interface IFullModal {
   className: string;

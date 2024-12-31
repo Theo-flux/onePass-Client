@@ -29,6 +29,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
           <div>
             <Input
               id="name"
+              name="name"
               autofocus
               autocomplete="off"
               label="Name"
@@ -38,6 +39,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
 
             <Input
               id="email"
+              name="email"
               autocomplete="off"
               label="Email/Username"
               placeholder="johndoe@gmail.com"
@@ -46,6 +48,7 @@ const { isOpen } = storeToRefs(AppConfigStore);
 
             <Input
               id="password"
+              name="password"
               autocomplete="off"
               label="Password"
               placeholder="Password"
