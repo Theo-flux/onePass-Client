@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { fileURLToPath } from 'url';
+import path from 'path';
 import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
@@ -19,15 +19,12 @@ export default defineConfig({
     }
   },
   resolve: {
-    alias: [
-      { find: '~', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
-      {
-        find: '@compts',
-        replacement: fileURLToPath(new URL('./src/components', import.meta.url))
-      },
-      { find: '@layouts', replacement: fileURLToPath(new URL('./src/layouts', import.meta.url)) },
-      { find: '@pages', replacement: fileURLToPath(new URL('./src/pages', import.meta.url)) }
-    ]
+    alias: {
+      '~': path.resolve(__dirname, './src'),
+      '@compts': path.resolve(__dirname, './src/components'),
+      '@layouts': path.resolve(__dirname, './src/layouts'),
+      '@pages': path.resolve(__dirname, './src/pages')
+    }
   },
   base: '/'
 });
